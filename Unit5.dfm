@@ -1,9 +1,9 @@
-object Form3: TForm3
+object Form5: TForm5
   Left = 192
-  Top = 125
+  Top = 124
   Width = 870
-  Height = 450
-  Caption = 'Form Data Kelas'
+  Height = 451
+  Caption = 'Form Data Poin'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,99 +14,112 @@ object Form3: TForm3
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 40
+    Left = 48
     Top = 56
-    Width = 27
+    Width = 50
     Height = 13
-    Caption = 'Nama'
+    Caption = 'Nama Poin'
   end
   object Label2: TLabel
-    Left = 40
-    Top = 88
-    Width = 52
+    Left = 48
+    Top = 96
+    Width = 28
     Height = 13
-    Caption = 'Jenis Kelas'
+    Caption = 'Bobot'
   end
   object Label3: TLabel
-    Left = 40
-    Top = 120
-    Width = 38
+    Left = 48
+    Top = 136
+    Width = 24
     Height = 13
-    Caption = 'Jurusan'
+    Caption = 'Jenis'
+  end
+  object Label4: TLabel
+    Left = 48
+    Top = 176
+    Width = 31
+    Height = 13
+    Caption = 'Status'
   end
   object Edit1: TEdit
-    Left = 128
+    Left = 120
     Top = 56
     Width = 145
     Height = 21
     TabOrder = 0
   end
-  object ComboBox1: TComboBox
-    Left = 128
-    Top = 88
+  object Edit2: TEdit
+    Left = 120
+    Top = 96
     Width = 145
     Height = 21
-    ItemHeight = 13
     TabOrder = 1
-    Items.Strings = (
-      'Pagi'
-      'Siang')
   end
-  object ComboBox2: TComboBox
-    Left = 128
-    Top = 120
+  object ComboBox1: TComboBox
+    Left = 120
+    Top = 136
     Width = 145
     Height = 21
     ItemHeight = 13
     TabOrder = 2
     Items.Strings = (
-      'Bahasa'
-      'IPA'
-      'IPS')
+      'Prestasi'
+      'Pelanggaran')
+  end
+  object ComboBox2: TComboBox
+    Left = 120
+    Top = 176
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 3
+    Items.Strings = (
+      'Aktif'
+      'Tidak Aktif')
   end
   object Button1: TButton
-    Left = 304
-    Top = 160
+    Left = 312
+    Top = 216
     Width = 75
     Height = 25
     Caption = 'Baru'
-    TabOrder = 3
+    TabOrder = 4
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 40
-    Top = 160
+    Left = 48
+    Top = 216
     Width = 75
     Height = 25
     Caption = 'Simpan'
-    TabOrder = 4
+    TabOrder = 5
     OnClick = Button2Click
   end
   object Button3: TButton
-    Left = 128
-    Top = 160
+    Left = 136
+    Top = 216
     Width = 75
     Height = 25
     Caption = 'Edit'
-    TabOrder = 5
+    TabOrder = 6
     OnClick = Button3Click
   end
   object Button4: TButton
-    Left = 216
-    Top = 160
+    Left = 224
+    Top = 216
     Width = 75
     Height = 25
     Caption = 'Hapus'
-    TabOrder = 6
+    TabOrder = 7
     OnClick = Button4Click
   end
   object DBGrid1: TDBGrid
-    Left = 40
-    Top = 208
-    Width = 337
+    Left = 48
+    Top = 256
+    Width = 465
     Height = 120
     DataSource = DataSource1
-    TabOrder = 7
+    TabOrder = 8
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -116,17 +129,17 @@ object Form3: TForm3
   end
   object DataSource1: TDataSource
     DataSet = ZQuery1
-    Left = 424
-    Top = 80
+    Left = 400
+    Top = 128
   end
   object ZQuery1: TZQuery
     Connection = ZConnection1
     Active = True
     SQL.Strings = (
-      'select * from tb_kelas')
+      'select * from tb_poin')
     Params = <>
-    Left = 360
-    Top = 80
+    Left = 344
+    Top = 112
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cGET_ACP
@@ -139,7 +152,7 @@ object Form3: TForm3
     User = 'root'
     Protocol = 'mysql'
     LibraryLocation = 'C:\Projek_Poin_Siswa\libmysql.dll'
-    Left = 296
-    Top = 80
+    Left = 288
+    Top = 96
   end
 end

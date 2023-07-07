@@ -4,54 +4,52 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Grids, DBGrids, DB, ZAbstractRODataset,
+  Dialogs, Grids, DBGrids, StdCtrls, DB, ZAbstractRODataset,
   ZAbstractDataset, ZDataset, ZAbstractConnection, ZConnection, ComCtrls;
 
 type
   TForm1 = class(TForm)
-    d1: TDataSource;
-    b3: TButton;
-    b4: TButton;
-    b5: TButton;
-    b6: TButton;
-    b2: TButton;
-    l1: TLabel;
-    l2: TLabel;
-    l3: TLabel;
-    l4: TLabel;
-    l5: TLabel;
-    l6: TLabel;
-    l7: TLabel;
-    l8: TLabel;
-    l9: TLabel;
-    l10: TLabel;
-    l11: TLabel;
-    l12: TLabel;
-    l13: TLabel;
-    l14: TLabel;
-    e1: TEdit;
-    e2: TEdit;
-    e3: TEdit;
-    e4: TEdit;
-    e5: TEdit;
-    e6: TEdit;
-    e8: TEdit;
-    e9: TEdit;
-    dg1: TDBGrid;
-    dtp1: TDateTimePicker;
-    c1: TComboBox;
-    c2: TComboBox;
-    c3: TComboBox;
-    c4: TComboBox;
-    e7: TEdit;
-    con1: TZConnection;
-    zqry1: TZQuery;
-    procedure b1Click(Sender: TObject);
-    procedure b3Click(Sender: TObject);
-    procedure dg1CellClick(Column: TColumn);
-    procedure b4Click(Sender: TObject);
-    procedure b5Click(Sender: TObject);
-    procedure b6Click(Sender: TObject);
+    ZConnection1: TZConnection;
+    ZQuery1: TZQuery;
+    DataSource1: TDataSource;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+    Edit7: TEdit;
+    Edit8: TEdit;
+    Edit9: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    DBGrid1: TDBGrid;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    ComboBox3: TComboBox;
+    ComboBox4: TComboBox;
+    DateTimePicker1: TDateTimePicker;
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
+    procedure Button4Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,88 +64,76 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.b1Click(Sender: TObject);
+procedure TForm1.Button2Click(Sender: TObject);
 begin
-  e1.Clear;
-  e2.Clear;
-  e3.Clear;
-  e4.Clear;
-  e5.Clear;
-  e6.Clear;
-  e7.Clear;
-  e8.Clear;
-  e9.Clear;
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('insert into siswa values(null, null, "'+Edit1.Text+'", "'+Edit2.Text+'", "'+Edit3.Text+'", "'+Edit4.Text+'", "'+Edit5.Text+'", "'+FormatDateTime('yyyy-mm-dd',DateTimePicker1.Date)+'", "'+ComboBox1.Text+'", "'+ComboBox2.Text+'", "'+ComboBox3.Text+'", "'+Edit6.Text+'", "'+Edit7.Text+'", "'+Edit8.Text+'", "'+Edit9.Text+'", "'+ComboBox4.Text+'")');
+  ZQuery1.ExecSQL;
+
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('select * from siswa');
+  ZQuery1.Open;
+  Showmessage('DATA BERHASIL DI SIMPAN..');
 end;
 
-procedure TForm1.b3Click(Sender: TObject);
+procedure TForm1.Button3Click(Sender: TObject);
 begin
-  zqry1.SQL.Clear;
-  zqry1.SQL.Add('insert into tb_siswa values(null, "'+e1.Text+'", "'+e2.Text+'", "'+e3.Text+'", "'+e4.Text+'", "'+e5.Text+'", "'+FormatDateTime('yyyy-mm-dd',dtp1.Date)+'", "'+c1.Text+'", "'+c2.Text+'", "'+c3.Text+'", "'+e6.Text+'", "'+e7.Text+'", "'+e8.Text+'", "'+e9.Text+'", "'+c4.Text+'")');
-  zqry1.ExecSQL;
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('update siswa set nis="'+Edit1.Text+'", nisn="'+Edit2.Text+'", nama_siswa="'+Edit3.Text+'", nik="'+Edit4.Text+'", tempat_lahir="'+Edit5.Text+'", jenis_kelamin="'+ComboBox1.Text+'", tingkat_kelas="'+ComboBox2.Text+'", jurusan="'+ComboBox3.Text+'", wali_kelas="'+Edit6.Text+'", alamat="'+Edit7.Text+'", telp="'+Edit8.Text+'", hp="'+Edit9.Text+'", status="'+ComboBox4.Text+'" where siswa_id="'+id+'"');
+  ZQuery1.ExecSQL;
 
-  zqry1.SQL.Clear;
-  zqry1.SQL.Add('select * from tb_siswa');
-  zqry1.Open;
-  Showmessage('DATA BERHASIL DI SIMPAN');
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('select * from siswa');
+  ZQuery1.Open;
+  Showmessage('DATA BERHASIL DI EDIT..');
 end;
 
-procedure TForm1.dg1CellClick(Column: TColumn);
+procedure TForm1.DBGrid1CellClick(Column: TColumn);
 begin
-  id:=zqry1.Fields[0].AsString;
-  e1.Text:=zqry1.Fields[1].AsString;
-  e2.Text:=zqry1.Fields[2].AsString;
-  e3.Text:=zqry1.Fields[3].AsString;
-  e4.Text:=zqry1.Fields[4].AsString;
-  e5.Text:=zqry1.Fields[5].AsString;
-  dtp1.date:=zqry1.Fields[6].AsDateTime;
-  c1.Text:=zqry1.Fields[7].AsString;
-  c2.Text:=zqry1.Fields[8].AsString;
-  c3.Text:=zqry1.Fields[9].AsString;
-  e6.Text:=zqry1.Fields[10].AsString;
-  e7.Text:=zqry1.Fields[11].AsString;
-  e8.Text:=zqry1.Fields[12].AsString;
-  e9.Text:=zqry1.Fields[13].AsString;
-  c4.Text:=zqry1.Fields[14].AsString;
+id:=ZQuery1.Fields[0].AsString;
+Edit1.Text:=ZQuery1.Fields[1].AsString;
+Edit2.Text:=ZQuery1.Fields[2].AsString;
+Edit3.Text:=ZQuery1.Fields[3].AsString;
+Edit4.Text:=ZQuery1.Fields[4].AsString;
+Edit5.Text:=ZQuery1.Fields[5].AsString;
+DateTimePicker1.Date:=ZQuery1.Fields[6].AsDateTime;
+ComboBox1.Text:=ZQuery1.Fields[7].AsString;
+ComboBox2.Text:=ZQuery1.Fields[8].AsString;
+ComboBox3.Text:=ZQuery1.Fields[9].AsString;
+Edit6.Text:=ZQuery1.Fields[10].AsString;
+Edit7.Text:=ZQuery1.Fields[11].AsString;
+Edit8.Text:=ZQuery1.Fields[12].AsString;
+Edit9.Text:=ZQuery1.Fields[13].AsString;
+ComboBox4.Text:=ZQuery1.Fields[14].AsString;
 end;
 
-procedure TForm1.b4Click(Sender: TObject);
+procedure TForm1.Button4Click(Sender: TObject);
 begin
-  zqry1.SQL.Clear;
-  zqry1.SQL.Add('update tb_siswa set nis="'+e1.Text+'", nisn="'+e2.Text+'", nama_siswa="'+e3.Text+'", nik="'+e4.Text+'", tempat_lahir="'+e5.Text+'",jenis_kelamin="'+c1.Text+'",tingkat_kelas="'+c2.Text+'",jurusan="'+c3.Text+'",wali_kelas="'+e6.Text+'",alamat="'+e7.Text+'",telp="'+e8.Text+'",hp="'+e9.Text+'",status="'+c4.Text+'" where siswa_id="'+id+'"');
-  zqry1.ExecSQL;
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('delete from siswa where id="'+id+'"');
+  ZQuery1.ExecSQL;
 
-  zqry1.SQL.Clear;
-  zqry1.SQL.Add('select * from tb_siswa');
-  zqry1.Open;
-  Showmessage('DATA BERHASIL DI EDIT');
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('select * from siswa');
+  ZQuery1.Open;
+  ShowMessage('DATA BERHASIL DIHAPUS..');
 end;
 
-procedure TForm1.b5Click(Sender: TObject);
+procedure TForm1.Button1Click(Sender: TObject);
 begin
-  zqry1.SQL.Clear;
-  zqry1.SQL.Add('delete from tb_siswa where siswa_id="'+id+'"');
-  zqry1.ExecSQL;
-  zqry1.SQL.Clear;
-  zqry1.SQL.Add('select * from tb_siswa');
-  zqry1.Open;
-  ShowMessage('DATA BERHASIL DIHAPUS!');
-end;
-
-procedure TForm1.b6Click(Sender: TObject);
-begin
-  e1.Clear;
-  e2.Clear;
-  e3.Clear;
-  e4.Clear;
-  e5.Clear;
-  c1.Clear;
-  c2.Clear;
-  c3.Clear;
-  e6.Clear;
-  e7.Clear;
-  e8.Clear;
-  e9.Clear;
-  c4.Clear;
+Edit1.Clear;
+Edit2.Clear;
+Edit3.Clear;
+Edit4.Clear;
+Edit5.Clear;
+ComboBox1.Clear;
+ComboBox2.Clear;
+ComboBox3.Clear;
+Edit6.Clear;
+Edit7.Clear;
+Edit8.Clear;
+Edit9.Clear;
+ComboBox4.Clear;
 end;
 
 end.
