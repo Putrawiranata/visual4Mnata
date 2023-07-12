@@ -101,9 +101,7 @@ object Form2: TForm2
       'SD'
       'SMP'
       'SMA/K'
-      'S1'
-      'S2'
-      'S3')
+      'Sarjana')
   end
   object Edit3: TEdit
     Left = 104

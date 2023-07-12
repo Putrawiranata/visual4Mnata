@@ -15,8 +15,8 @@ object Form8: TForm8
   PixelsPerInch = 96
   TextHeight = 13
   object MainMenu1: TMainMenu
-    Left = 56
-    Top = 24
+    Left = 24
+    Top = 16
     object FormData1: TMenuItem
       Caption = 'Form Data'
       object DataSiswa1: TMenuItem

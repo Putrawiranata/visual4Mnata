@@ -42,18 +42,18 @@ procedure TForm9.DBGrid1CellClick(Column: TColumn);
 begin
   id := ZQuery1.Fields[0].AsString;
   ZQuery2.SQL.Clear;
-  ZQuery2.SQL.Add('SELECT ortu.nama, hubungan.status, hubungan.keterangan, ortu.telp FROM ((hubungan INNER JOIN ortu ON hubungan.ortu_id = ortu.ortu_id) INNER JOIN siswa ON hubungan.siswa_id = siswa.siswa_id) where siswa.siswa_id="'+id+'"');
+  ZQuery2.SQL.Add('SELECT tb_ortu.nama, tb_hubungan.status, tb_hubungan.keterangan, tb_ortu.telp FROM ((hubungan INNER JOIN tb_ortu ON tb_hubungan.ortu_id = tb_ortu.ortu_id) INNER JOIN tb_siswa ON tb_hubungan.siswa_id = tb_siswa.siswa_id) where tb_siswa.siswa_id="'+id+'"');
   ZQuery2.Open;
 end;
 
 procedure TForm9.Button1Click(Sender: TObject);
 begin
   ZQuery2.SQL.Clear;
-  ZQuery2.SQL.Add('SELECT ortu.nama, hubungan.status, hubungan.keterangan, ortu.telp FROM ((hubungan INNER JOIN ortu ON hubungan.ortu_id = ortu.ortu_id) INNER JOIN siswa ON hubungan.siswa_id = siswa.siswa_id) where siswa.siswa_id="'+id+'"');
+  ZQuery2.SQL.Add('SELECT tb_ortu.nama, tb_hubungan.status, tb_hubungan.keterangan, tb_ortu.telp FROM ((hubungan INNER JOIN tb_ortu ON tb_hubungan.ortu_id = tb_ortu.ortu_id) INNER JOIN tb_siswa ON tb_hubungan.siswa_id = tb_siswa.siswa_id) where tb_siswa.siswa_id="'+id+'"');
   ZQuery2.Open;
 
   ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('select * from siswa where siswa_id="'+id+'"');
+  ZQuery1.SQL.Add('select * from tb_siswa where siswa_id="'+id+'"');
   ZQuery1.Open;
 
   frxReport1.ShowReport();

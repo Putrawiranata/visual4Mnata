@@ -71,11 +71,11 @@ end;
 procedure TForm2.Button2Click(Sender: TObject);
 begin
   ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('insert into ortu values(null, "'+Edit1.Text+'", "'+Edit2.Text+'", "'+ComboBox1.Text+'", "'+Edit3.Text+'", "'+Edit4.Text+'", "'+Edit5.Text+'", "'+Edit6.Text+'", "'+ComboBox2.Text+'", "'+ComboBox3.Text+'")');
+  ZQuery1.SQL.Add('insert into tb_ortu values(null, "'+Edit1.Text+'", "'+Edit2.Text+'", "'+ComboBox1.Text+'", "'+Edit3.Text+'", "'+Edit4.Text+'", "'+Edit5.Text+'", "'+Edit6.Text+'", "'+ComboBox2.Text+'", "'+ComboBox3.Text+'")');
   ZQuery1.ExecSQL;
 
   ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('select * from ortu');
+  ZQuery1.SQL.Add('select * from tb_ortu');
   ZQuery1.Open;
   Showmessage('DATA BERHASIL DI SIMPAN..');
 end;
@@ -83,11 +83,11 @@ end;
 procedure TForm2.Button3Click(Sender: TObject);
 begin
   ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('update ortu set nik="'+Edit1.Text+'", nama="'+Edit2.Text+'", pendidikan="'+ComboBox1.Text+'", pekerjaan="'+Edit3.Text+'", telp="'+Edit4.Text+'", alamat="'+Edit5.Text+'", agama="'+Edit6.Text+'", jenis_kelamin="'+ComboBox2.Text+'", status="'+ComboBox3.Text+'" where ortu_id="'+id+'"');
+  ZQuery1.SQL.Add('update tb_ortu set nik="'+Edit1.Text+'", nama="'+Edit2.Text+'", pendidikan="'+ComboBox1.Text+'", pekerjaan="'+Edit3.Text+'", telp="'+Edit4.Text+'", alamat="'+Edit5.Text+'", agama="'+Edit6.Text+'", jenis_kelamin="'+ComboBox2.Text+'", status="'+ComboBox3.Text+'" where ortu_id="'+id+'"');
   ZQuery1.ExecSQL;
 
   ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('select * from ortu');
+  ZQuery1.SQL.Add('select * from tb_ortu');
   ZQuery1.Open;
   Showmessage('DATA BERHASIL DI EDIT..');
 end;
@@ -95,11 +95,11 @@ end;
 procedure TForm2.Button4Click(Sender: TObject);
 begin
   ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('delete from ortu where ortu_id="'+id+'"');
+  ZQuery1.SQL.Add('delete from tb_ortu where ortu_id="'+id+'"');
   ZQuery1.ExecSQL;
 
   ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('select * from ortu');
+  ZQuery1.SQL.Add('select * from tb_ortu');
   ZQuery1.Open;
   Showmessage('DATA BERHASIL DI HAPUS..');
 end;
